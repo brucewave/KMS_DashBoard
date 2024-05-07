@@ -14,8 +14,8 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-	
-	
+
+
 	<link rel="stylesheet" href="./css/modal.css">
 	<script src="./js/check_login.js"></script>
 	<script src="./js/all_numeric.js"></script>
@@ -230,43 +230,43 @@
 											<div class="col-md-12">
 												<div class="title-table d-flex justify-content-between">
 													<div class="title">
-														<h4 class="card-title">Quản lý phụ huynh</h4>
-														<span style="color: black !important;">Danh sách người
-															dùng</span>
-													</div>
-													<div class="button">
-														<a href="./addParent.html" class="btn btn-success"
-															data-toggle="modal"><i class="material-icons"></i>
-															<span>Thêm</span></a>
-														<a href="#deleteEmployeeModal" class="btn btn-danger"
-															data-toggle="modal"><i class="material-icons"></i>
-															<span>Xóa</span></a>
+														<h4 class="card-title">Thêm mới phụ huynh</h4>
 													</div>
 												</div>
 
-												<!-- TABLE -->
 												<div class="table-responsive">
-													<table id="parent-table" class="table table-striped table-hover"
-														style="color: black !important;">
-														<thead>
-															<tr>
-																<th>
-																	<span class="custom-checkbox">
-																		<input type="checkbox" id="selectAll">
-																		<label for="selectAll"></label>
-																	</span>
-																</th>
-																<th>Họ tên</th>
-																<th>SĐT</th>
-																<th>Mật Khẩu</th>
-																<th>Email</th>
-																<th>Địa chỉ</th>
-																<th>Thao Tác</th>
-															</tr>
-														</thead>
-														<tbody></tbody>
-													</table>
-													<div class="clearfix">
+													<!-- Form nhập liệu -->
+													<div id="add-parent-form">
+														<form id="parent-form" style="color: black;">
+															<div class="form-group mb-3">
+																<label for="fullName">Họ tên:</label>
+																<input type="text" class="form-control" id="fullName"
+																	required>
+															</div>
+															<div class="form-group mb-3">
+																<label for="phoneNumber">SĐT:</label>
+																<input type="text" class="form-control" id="phoneNumber"
+																	required>
+															</div>
+															<div class="form-group mb-3">
+																<label for="password">Mật khẩu:</label>
+																<input type="password" class="form-control"
+																	id="password" required>
+															</div>
+															<div class="form-group mb-3">
+																<label for="email">Email:</label>
+																<input type="email" class="form-control" id="email"
+																	required>
+															</div>
+															<div class="form-group mb-3">
+																<label for="address">Địa chỉ:</label>
+																<input type="text" class="form-control" id="address"
+																	required>
+															</div>
+															<button type="submit" class="btn btn-primary mt-3">Thêm
+																mới</button>
+															<button type="button" class="btn btn-danger mt-3">Hủy</button>
+														</form>
 													</div>
 												</div>
 											</div>
@@ -290,8 +290,6 @@
 
 	</div>
 	<!-- END MAIN -->
-
-	<!-- Modal -->
 
 
 

@@ -8,25 +8,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Dashboard KMS</title>
 
-	<link href="vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
-	<link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
 	<!-- Style css -->
 	<link href="css/style.css" rel="stylesheet">
 
-	<script>
-		$(document).ready(function () {
-			$("a").click(function () {
-				$("a").removeClass("mm-active");
-				$(this).addClass("mm-active");
-			});
-		});
-
-	</script>
+	<!-- Script -->
+	<script src="./js/check_login.js"></script>
+	<script src="./js/all_numeric.js"></script>
 
 </head>
 
 <body>
-
 
 	<!-- LOADING -->
 	<div id="preloader">
@@ -185,8 +176,8 @@
 
 								</div>
 								<div>
-									<h2 class="text-white invoice-num">2478</h2>
-									<span class="text-white fs-18">Tổng Giáo Viên</span>
+									<h2 class="text-white invoice-num" id="total-teachers">2478</h2>
+									<span class="text-white fs-18 all_teacher">Tổng Giáo Viên</span>
 								</div>
 							</div>
 						</div>
@@ -204,7 +195,7 @@
 
 								</div>
 								<div>
-									<h2 class="text-white invoice-num">983</h2>
+									<h2 class="text-white invoice-num" id="total-parent">983</h2>
 									<span class="text-white fs-18">Tổng Phụ Huynh</span>
 								</div>
 							</div>
@@ -223,7 +214,7 @@
 
 								</div>
 								<div>
-									<h2 class="text-white invoice-num">1256</h2>
+									<h2 class="text-white invoice-num" id="total-children">1256</h2>
 									<span class="text-white fs-18">Tổng Học Sinh</span>
 								</div>
 							</div>
@@ -240,63 +231,16 @@
 
 								</div>
 								<div>
-									<h2 class="text-white invoice-num">652</h2>
-									<span class="text-white fs-18">Tổng Người Dùng</span>
+									<h2 class="text-white invoice-num" id="total-classrooms">652</h2>
+									<span class="text-white fs-18">Tổng Lớp Học</span>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xl-9 col-xxl-12">
-						<div class="card glass">
-							<div class="card-body">
-								<div class="row align-items-center">
-									<div class="col-xl-6">
-										<div class="card-bx" style="background-color: #5bcfc5;">
-											<img class="pattern-img" src="images/pattern/pattern6.png" alt="">
-											<div class="card-info text-white">
-												<img src="images/pattern/circle.png" class="mb-4" alt="">
-												<h2 class="text-white card-balance">$824,571.93</h2>
-												<p class="fs-16">Ví</p>
-												<span>+0,8% so với tuần trước</span>
-											</div>
-											<a class="change-btn" href="javascript:void(0);"><i
-													class="fa fa-caret-up up-ico"></i>Tải Lại<span
-													class="reload-icon"><i
-														class="fas fa-sync-alt reload active"></i></span></a>
-										</div>
-									</div>
-									<div class="col-xl-6">
-										<div class="row  mt-xl-0 mt-4">
-											<div class="col-md-6">
-												<h4 class="card-title">Tổng Quan Chi Tiêu</h4>
-												<span>Số tiền đã được chi tiêu qua các hạng mục dưới đây</span>
-												<ul class="card-list mt-4">
-													<li><span class="circle"
-															style="background-color: yellow;"></span>Nhân
-														Viên<span>20%</span></li>
-													<li><span class="bg-green circle"></span>Sự Kiện<span>40%</span>
-													</li>
-													<li><span class="circle"
-															style="background-color: #5bcfc5;"></span>Ăn
-														Uống<span>15%</span>
-													</li>
-													<li><span class="circle"
-															style="background-color: red;"></span>Khác<span>15%</span>
-													</li>
-												</ul>
-											</div>
-											<div class="col-md-6">
-												<canvas id="polarChart"></canvas>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-xxl-5">
+					<!-- Notification -->
+					<div class="col-xl-12 col-xxl-12">
 						<div class="card glass">
 							<div class="card-header border-0 pb-0">
 								<div>
@@ -333,52 +277,6 @@
 							<div class="card-footer border-0 pt-0">
 								<a href="javascript:void(0);" class="btn btn-primary d-block btn-lg text-uppercase">Gửi
 									Ngay</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-7 col-xxl-7">
-						<div class="card glass">
-							<div class="card-header d-flex flex-wrap border-0 pb-0">
-								<div class="me-auto mb-sm-0 mb-3">
-									<h4 class="card-title mb-2">Tổng Quan Người Dùng</h4>
-									<span class="fs-12">Lượng truy cập của người dùng</span>
-								</div>
-								<a href="javascript:void(0)" class="btn btn-rounded btn-md btn-primary me-3 me-3"><i
-										class="las la-download scale5 me-3"></i>Download Report</a>
-								<div class="dropdown">
-									<a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown"
-										aria-expanded="false">
-										<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-											xmlns="http://www.w3.org/2000/svg">
-											<path
-												d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
-												stroke="#575757" stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"></path>
-											<path
-												d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z"
-												stroke="#575757" stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"></path>
-											<path
-												d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z"
-												stroke="#575757" stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"></path>
-										</svg>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item" href="javascript:void(0);">Delete</a>
-										<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-									</div>
-								</div>
-							</div>
-							<div class="card-body pb-2">
-								<div class="d-sm-flex d-block">
-									<ul class="card-list d-flex mt-sm-0 mt-3">
-										<li class="me-3"><span class="circle"
-												style="background-color: rgb(8, 232, 8);"></span>Mới</li>
-										<li><span class="circle" style="background-color: #dc3545;"></span>Cũ</li>
-									</ul>
-								</div>
-								<div id="chartBar2" class="bar-chart"></div>
 							</div>
 						</div>
 					</div>
