@@ -20,6 +20,7 @@
 	<script src="./js/check_login.js"></script>
 	<script src="./js/all_numeric.js"></script>
 	<script src="./js/users.js"></script>
+	<script src="./js/test.js"></script>
 
 </head>
 
@@ -238,24 +239,14 @@
 														<a href="./addParent.html" class="btn btn-success"
 															data-toggle="modal"><i class="material-icons"></i>
 															<span>Thêm</span></a>
-														<a href="#deleteEmployeeModal" class="btn btn-danger"
-															data-toggle="modal"><i class="material-icons"></i>
-															<span>Xóa</span></a>
 													</div>
 												</div>
 
 												<!-- TABLE -->
-												<div class="table-responsive">
-													<table id="parent-table" class="table table-striped table-hover"
-														style="color: black !important;">
+												<div class="table-responsive mt-3">
+													<table id="parent-table" class="table" style="color: black;">
 														<thead>
 															<tr>
-																<th>
-																	<span class="custom-checkbox">
-																		<input type="checkbox" id="selectAll">
-																		<label for="selectAll"></label>
-																	</span>
-																</th>
 																<th>Họ tên</th>
 																<th>SĐT</th>
 																<th>Mật Khẩu</th>
@@ -268,7 +259,6 @@
 													</table>
 													<div class="clearfix">
 													</div>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -277,6 +267,59 @@
 						</div>
 					</div>
 				</div>
+
+
+
+				<div class="row">
+					<div class="col-xl-9 col-xxl-12">
+						<div class="card glass">
+							<div class="card-body">
+								<div class="row align-items-center">
+									<div class="col-xl-12">
+										<div class="row mt-xl-0 mt-4">
+											<div class="col-md-12">
+												<div class="title-table d-flex justify-content-between">
+													<div class="title">
+														<h4 class="card-title">Quản lý học sinh</h4>
+														<span style="color: black !important;">Danh sách người
+															dùng</span>
+													</div>
+													<div class="button">
+														<a href="./addParent.html" class="btn btn-success"
+															data-toggle="modal"><i class="material-icons"></i>
+															<span>Thêm</span></a>
+													</div>
+												</div>
+
+												<!-- TABLE -->
+												<div class="table-responsive mt-3">
+													<table id="children-table" class="table" style="color: black;">
+														<thead>
+															<tr>
+																<th>Họ tên</th>
+																<th>Tuổi</th>
+																<th>Ngày sinh</th>
+																<th>Chiều cao</th>
+																<th>Cân nặng</th>
+																<th>Giới tính</th>
+															</tr>
+														</thead>
+														<tbody></tbody>
+													</table>
+													<div class="clearfix">
+													</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
 			</div>
 		</div>
 
@@ -292,6 +335,7 @@
 	<!-- END MAIN -->
 
 	<!-- Modal -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 
 

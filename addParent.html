@@ -13,13 +13,14 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
 
 
 	<link rel="stylesheet" href="./css/modal.css">
 	<script src="./js/check_login.js"></script>
 	<script src="./js/all_numeric.js"></script>
-	<script src="./js/users.js"></script>
+	<!-- <script src="./js/users.js"></script> -->
+	<script src="./js/test.js"></script>
 
 </head>
 
@@ -235,40 +236,111 @@
 												</div>
 
 												<div class="table-responsive">
-													<!-- Form nhập liệu -->
-													<div id="add-parent-form">
-														<form id="parent-form" style="color: black;">
-															<div class="form-group mb-3">
-																<label for="fullName">Họ tên:</label>
-																<input type="text" class="form-control" id="fullName"
-																	required>
+													<!-- form add -->
+													<div class="container">
+														<div class="row">
+															<div class="col-md-6">
+																<h3>Thông tin bố mẹ</h3>
+																<div class="form-group">
+																	<label class="text-black mt-3">Họ và tên</label>
+																	<input type="text" class="form-control"
+																		name="fullName"
+																		style="border: 1px solid black;">
+																</div>
+																<div class="form-group">
+																	<label class="text-black mt-3">Số điện thoại</label>
+																	<input type="text" class="form-control"
+																		name="phoneNumber"
+																		style="border: 1px solid black;">
+																</div>
+																<div class="form-group">
+																	<label class="text-black mt-3">Mật khẩu</label>
+																	<input type="text" class="form-control"
+																		name="password"
+																		style="border: 1px solid black;">
+																</div>
+																<div class="form-group">
+																	<label class="text-black mt-3">Email</label>
+																	<input type="text" class="form-control" name="email"
+																		style="border: 1px solid black;">
+																</div>
+																<div class="form-group">
+																	<label class="text-black mt-3">Địa chỉ</label>
+																	<input type="text" class="form-control"
+																		name="address" style="border: 1px solid black;">
+																</div>
 															</div>
-															<div class="form-group mb-3">
-																<label for="phoneNumber">SĐT:</label>
-																<input type="text" class="form-control" id="phoneNumber"
-																	required>
+															<div class="col-md-6">
+																<h3>Thông tin con</h3>
+																<div class="form-group">
+																	<label class="text-black mt-3">Họ và tên con</label>
+																	<input type="text" class="form-control"
+																		name="fullNameChild"
+																		style="border: 1px solid black;">
+																</div>
+																<div class="form-group">
+																	<label class="text-black mt-3">Tuổi con</label>
+																	<input type="text" class="form-control" name="age"
+																		style="border: 1px solid black;">
+																</div>
+																<div class="form-group">
+																	<label class="text-black mt-3">Sinh nhật con</label>
+																	<input type="text" class="form-control"
+																		name="birthDay"
+																		style="border: 1px solid black;">
+																</div>
+																<div class="form-group">
+																	<label class="text-black mt-3">Chiều cao con</label>
+																	<input type="text" class="form-control"
+																		name="height" style="border: 1px solid black;">
+																</div>
+																<div class="form-group">
+																	<label class="text-black mt-3">Cân nặng con</label>
+																	<input type="text" class="form-control"
+																		name="weight" style="border: 1px solid black;">
+																</div>
+																<div class="form-group">
+																	  <label class="text-black mt-3">Giới tính
+																		con</label>
+																	  <div class="d-flex">
+																		    <div class="form-check">
+																			      <input class="form-check-input"
+																				type="radio" name="gender"
+																				id="genderNam" value="true">
+																			      <label class="form-check-label"
+																				style="color: black;"
+																				for="genderNam">Nam</label>
+																			    </div>
+																		    <div class="form-check ml-3">
+																			      <input class="form-check-input"
+																				type="radio" name="gender" id="genderNu"
+																				value="false">
+																			      <label class="form-check-label"
+																				style="color: black;"
+																				for="genderNu">Nữ</label>
+																			    </div>
+																		  </div>
+																</div>
+
+
+
+																<div class="form-group">
+																	<label class="text-black mt-3">Sở thích con</label>
+																	<input type="text" class="form-control" name="hobby"
+																		style="border: 1px solid black;">
+																</div>
 															</div>
-															<div class="form-group mb-3">
-																<label for="password">Mật khẩu:</label>
-																<input type="password" class="form-control"
-																	id="password" required>
-															</div>
-															<div class="form-group mb-3">
-																<label for="email">Email:</label>
-																<input type="email" class="form-control" id="email"
-																	required>
-															</div>
-															<div class="form-group mb-3">
-																<label for="address">Địa chỉ:</label>
-																<input type="text" class="form-control" id="address"
-																	required>
-															</div>
-															<button type="submit" class="btn btn-primary mt-3">Thêm
-																mới</button>
-															<button type="button" class="btn btn-danger mt-3">Hủy</button>
-														</form>
+														</div>
+														<div class="form-group">
+															<button id="create" class="btn btn-primary">Thêm</button>
+															<button id="cancel" class="btn btn-danger"
+																onclick="window.location.href='user.html';">Hủy</button>
+														</div>
 													</div>
 												</div>
+
+
+
 											</div>
 										</div>
 									</div>
@@ -296,8 +368,8 @@
 	<!-- Required vendors -->
 	<script src="./js/model.js"></script>
 	<script src="vendor/global/global.min.js"></script>
-	<script src="vendor/chart.js/Chart.bundle.min.js"></script>
-	<script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+	<!-- <script src="vendor/chart.js/Chart.bundle.min.js"></script> -->
+	<!-- <script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script> -->
 
 	<!-- Apex Chart -->
 	<script src="vendor/apexchart/apexchart.js"></script>
