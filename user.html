@@ -14,8 +14,8 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-	
-	
+
+
 	<link rel="stylesheet" href="./css/modal.css">
 	<script src="./js/check_login.js"></script>
 	<script src="./js/all_numeric.js"></script>
@@ -114,29 +114,27 @@
 					</li>
 					<li><a href="index.html" aria-expanded="false">
 							<i class="flaticon-025-dashboard"></i>
-							<span class="nav-text">Dashboard</span>
+							<span class="nav-text" style="color: black;">Dashboard</span>
 						</a>
 					</li>
-					<li><a href="#" aria-expanded="false">
+					<li><a href="user.html" aria-expanded="false">
 							<i class="flaticon-050-info"></i>
-							<span class="nav-text">Người Dùng</span>
+							<span class="nav-text" style="color: black;">Người dùng</span>
 						</a>
 					</li>
-					<li><a href="#" aria-expanded="false">
-							<i class="flaticon-041-graph"></i>
-							<span class="nav-text">Thông Báo</span>
-						</a>
-					</li>
-					<li><a href="#" aria-expanded="false">
+
+					<li><a href="user.html" aria-expanded="false">
 							<i class="flaticon-086-star"></i>
-							<span class="nav-text">Sự Kiện</span>
+							<span class="nav-text" style="color: black;">Thông báo</span>
 						</a>
 					</li>
-					<li><a href="#" aria-expanded="false">
+					<li onclick="localStorage.removeItem('token'); window.location.href='login.html'">
+						<a href="#" aria-expanded="false">
 							<i class="flaticon-045-heart"></i>
-							<span class="nav-text">Thoát</span>
+							<span id="logoutBtn" class="nav-text" style="color: black;">Thoát</span>
 						</a>
 					</li>
+
 				</ul>
 			</div>
 		</div>
@@ -220,7 +218,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- HTML -->
+				<!-- Phụ Huynh -->
 				<div class="row">
 					<div class="col-xl-9 col-xxl-12">
 						<div class="card glass">
@@ -259,6 +257,7 @@
 													</table>
 													<div class="clearfix">
 													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -268,8 +267,7 @@
 					</div>
 				</div>
 
-
-
+				<!-- Trẻ -->
 				<div class="row">
 					<div class="col-xl-9 col-xxl-12">
 						<div class="card glass">
@@ -302,12 +300,67 @@
 																<th>Chiều cao</th>
 																<th>Cân nặng</th>
 																<th>Giới tính</th>
+																<th>Chọn lớp</th>
+																<th>Thao tác</th>
 															</tr>
 														</thead>
 														<tbody></tbody>
 													</table>
 													<div class="clearfix">
 													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+
+				<!-- Giáo viên -->
+				<div class="row">
+					<div class="col-xl-9 col-xxl-12">
+						<div class="card glass">
+							<div class="card-body">
+								<div class="row align-items-center">
+									<div class="col-xl-12">
+										<div class="row mt-xl-0 mt-4">
+											<div class="col-md-12">
+												<div class="title-table d-flex justify-content-between">
+													<div class="title">
+														<h4 class="card-title">Quản lý giáo viên</h4>
+														<span style="color: black !important;">Danh sách người
+															dùng</span>
+													</div>
+													<div class="button">
+														<a href="./addTeacher.html" class="btn btn-success"
+															data-toggle="modal"><i class="material-icons"></i>
+															<span>Thêm</span></a>
+													</div>
+												</div>
+
+												<!-- TABLE -->
+												<div class="table-responsive mt-3">
+													<table id="teacher-table" class="table" style="color: black;">
+														<thead>
+															<tr>
+																<th>Họ tên</th>
+																<th>SĐT</th>
+																<th>Enail</th>
+																<th>Địa chỉ</th>
+																<th>Lớp giảng dạy</th>
+																<th>Thao Tác</th>
+															</tr>
+														</thead>
+														<tbody></tbody>
+													</table>
+													<div class="clearfix">
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -318,21 +371,13 @@
 				</div>
 
 
-
-
+				<!-- END MAIN -->
 			</div>
 		</div>
-
-
-
-		<!-- Content body end -->
-
-
-
-
-
 	</div>
-	<!-- END MAIN -->
+
+
+
 
 	<!-- Modal -->
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

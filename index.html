@@ -14,6 +14,8 @@
 	<!-- Script -->
 	<script src="./js/check_login.js"></script>
 	<script src="./js/all_numeric.js"></script>
+	<script src="./js/logout.js"></script>
+
 
 </head>
 
@@ -131,30 +133,27 @@
 					</li>
 					<li><a href="index.html" aria-expanded="false">
 							<i class="flaticon-025-dashboard"></i>
-							<span class="nav-text">Dashboard</span>
+							<span class="nav-text" style="color: black;">Dashboard</span>
 						</a>
 					</li>
 					<li><a href="user.html" aria-expanded="false">
 							<i class="flaticon-050-info"></i>
-							<span class="nav-text">Người Dùng</span>
+							<span class="nav-text" style="color: black;">Người dùng</span>
 						</a>
 					</li>
 
 					<li><a href="user.html" aria-expanded="false">
-							<i class="flaticon-041-graph"></i>
-							<span class="nav-text">Thông Báo</span>
-						</a>
-					</li>
-					<li><a href="user.html" aria-expanded="false">
 							<i class="flaticon-086-star"></i>
-							<span class="nav-text">Sự Kiện</span>
+							<span class="nav-text" style="color: black;">Thông báo</span>
 						</a>
 					</li>
-					<li><a href="user.html" aria-expanded="false">
+					<li onclick="localStorage.removeItem('token'); window.location.href='login.html'">
+						<a href="#" aria-expanded="false">
 							<i class="flaticon-045-heart"></i>
-							<span class="nav-text">Thoát</span>
+							<span id="logoutBtn" class="nav-text" style="color: black;">Thoát</span>
 						</a>
 					</li>
+
 				</ul>
 			</div>
 		</div>
