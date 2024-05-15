@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             redirect: "follow"
         };
 
-        fetch("http://localhost:9092/api/parent", requestOptions)
+        fetch("http://157.10.44.240:8080/api/parent", requestOptions)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error adding parent');

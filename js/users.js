@@ -1,4 +1,4 @@
-var parentAPI = 'http://localhost:9092/api/parent'
+var parentAPI = 'http://157.10.44.240:8080/api/parent'
 
 function start(token) {
     getParent(token, renderParent);

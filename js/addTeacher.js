@@ -1,9 +1,8 @@
-
-var parentAPI = 'http://localhost:9092/api/parent';
-var childrenAPI = 'http://localhost:9092/api/children';
-var userAPI = 'http://localhost:9092/api/user';
-// var teacherAPI = 'http://localhost:9092/api/teacher';
-var classroomAPI = 'http://localhost:9092/api/classroom';
+var parentAPI = 'http://157.10.44.240:8080/api/parent';
+var childrenAPI = 'http://157.10.44.240:8080/api/children';
+var userAPI = 'http://157.10.44.240:8080/api/user';
+// var teacherAPI = 'http://157.10.44.240:8080/api/teacher';
+var classroomAPI = 'http://157.10.44.240:8080/api/classroom';
 
 
 function start(token) {

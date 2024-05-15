@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const password = passwordInput.value.trim();
 
         // Gửi yêu cầu POST đến API
-        fetch("http://localhost:9092/api/auth/login", {
+        fetch("http://157.10.44.240:8080/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
