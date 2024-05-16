@@ -155,6 +155,8 @@ function createTeacher(token, data) {
                 backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
                 className: "success-toast",
             }).showToast();
+            window.location.href='user.html';
+
         })
         .catch(function (error) {
             Toastify({

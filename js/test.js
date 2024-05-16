@@ -53,6 +53,7 @@ function getClassrooms(token, callback) {
 }
 
 function renderTeachers(token, teachers, classrooms) {
+
   const listTeacherTable = document.querySelector("#teacher-table");
 
   listTeacherTable.innerHTML = '';
@@ -83,7 +84,7 @@ function renderTeachers(token, teachers, classrooms) {
           <td>${teacher.email}</td>
           <td>${teacher.address}</td>
           <td>
-            <select id="classroom-${teacher.id}" class="form-select">
+            <select id="classroom-${teacher.id}" class="form-select"">
               <option value="">-- Chọn lớp --</option>
               ${classrooms.map(
       (classroom) => `
@@ -107,10 +108,10 @@ function renderTeachers(token, teachers, classrooms) {
 
   listTeacherTable.innerHTML += teacherRows.join('');
 
-  listTeacherTable.querySelectorAll('button').forEach((button) => {
-    button.addEventListener('click', (event) => {
+  listTeacherTable.querySelectorAll('button.btn-info').forEach((updateButton) => {
+    updateButton.addEventListener('click', (event) => {
       const teacherId = event.target.dataset.teacherId;
-      const selectedClassroomId = document.getElementById(`classroom-${teacherId}`).value;
+      const selectedClassroomId = event.target.closest('tr').querySelector(`#classroom-${teacherId}`).value;
 
       if (selectedClassroomId) {
         updateTeacherClassroom(token, teacherId, selectedClassroomId);
@@ -119,7 +120,11 @@ function renderTeachers(token, teachers, classrooms) {
       }
     });
   });
+
+
+
 }
+
 
 function updateTeacherClassroom(token, teacherId, classroomId) {
   const updateUrl = addToClassroomAPI(teacherId, classroomId);
@@ -340,7 +345,7 @@ function handleDeleteParent(token, id) {
 
 
 function handleDeleteTeacher(token, id) {
-  
+
   axios.delete(userAPI + '/' + id, {
     headers: {
       Authorization: `Bearer ${token}`
