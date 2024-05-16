@@ -95,7 +95,10 @@ function renderTeachers(token, teachers, classrooms) {
             </select>
           </td>
           <td>
+          <div class="btn-group">
             <button data-teacher-id="${teacher.id}" class="btn btn-info">Cập nhật</button>
+            <button onclick="handleDeleteTeacher('${token}', ${teacher.id})" class="btn btn-danger" ">Xóa</button>
+          </div>
           </td>
 
         </tr>
@@ -129,9 +132,26 @@ function updateTeacherClassroom(token, teacherId, classroomId) {
   })
     .then((response) => {
       if (response.ok) {
-        alert("Cập nhật thành công!")
+        Toastify({
+          text: "Cập nhật lớp học thành công!",
+          duration: 5000,
+          close: true,
+          gravity: "top",
+          position: "left",
+          backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+          className: "success-toast",
+        }).showToast();
+        start(token);
       } else {
-        console.error("Thất bại");
+        Toastify({
+          text: "Cập nhật lớp học thất bại!",
+          duration: 5000,
+          close: true,
+          gravity: "top",
+          position: "left",
+          backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+          className: "error-toast",
+        }).showToast();
       }
     });
 }
@@ -259,9 +279,25 @@ function updateChildClassroom(token, childId, classroomId) {
   })
     .then((response) => {
       if (response.ok) {
-        alert("Thành công!");
+        Toastify({
+          text: "Cập nhật lớp học thành công!",
+          duration: 5000,
+          close: true,
+          gravity: "top",
+          position: "left",
+          backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+          className: "success-toast",
+        }).showToast();
       } else {
-        console.error('Cập nhật lớp học thất bại');
+        Toastify({
+          text: "Cập nhật lớp học thất bại!",
+          duration: 5000,
+          close: true,
+          gravity: "top",
+          position: "left",
+          backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+          className: "error-toast",
+        }).showToast();
       }
     });
 }
@@ -289,21 +325,50 @@ function handleDeleteParent(token, id) {
     }
   })
     .then(res => {
-      alert("Xóa thành công!")
+      Toastify({
+        text: "Xóa thành công!",
+        duration: 5000,
+        close: true,
+        gravity: "top",
+        position: "left",
+        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        className: "success-toast",
+      }).showToast();
+      start(token);
     })
 }
 
 
 function handleDeleteTeacher(token, id) {
-  axios.delete(teacherAPI + '/' + id, {
+  
+  axios.delete(userAPI + '/' + id, {
     headers: {
       Authorization: `Bearer ${token}`
     }
   })
     .then(res => {
-      alert("Xóa thành công!")
+      Toastify({
+        text: "Xóa thành công!",
+        duration: 5000,
+        close: true,
+        gravity: "top",
+        position: "left",
+        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        className: "success-toast",
+      }).showToast();
+      start(token);
     })
-
+    .catch(function (error) {
+      Toastify({
+        text: "Chỉ được xóa giáo viên không có lớp, Hãy phân lớp cho giáo viên khác lớp này !",
+        duration: 5000,
+        close: true,
+        gravity: "top",
+        position: "left",
+        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        className: "error-toast",
+      }).showToast();
+    });
 }
 
 
@@ -399,7 +464,7 @@ function renderParent(token, parent) {
           <td class="password">${maskPassword(key.password)}</td>
           <td>${key.email}</td>
           <td>${key.address}</td>
-          <td><button onclick="handleDeleteParent('${token}', ${key.id})" class="p-2" style="border-radius: 15px; background-color: red; color: white; ">Xóa</button></td>
+          <td><button onclick="handleDeleteParent('${token}', ${key.id})" class="btn btn-danger" ">Xóa</button></td>
         </tr>
       `
   });

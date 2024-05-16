@@ -39,11 +39,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = "index.html";
             })
             .catch(error => {
-                alert(error.message); // Hiển thị thông báo lỗi
+                // Hiển thị thông báo lỗi bằng Toastify
+                Toastify({
+                    text: error.message,
+                    duration: 3000,
+                    close: true, 
+                    gravity: "top", 
+                    position: "right", 
+                    backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)", 
+                    className: "error-toast", 
+                }).showToast();
+                // Hiển thị thông báo lỗi dưới input
+                errorMessage.textContent = error.message;
+                errorMessage.style.display = 'block';
             });
     });
-
 });
-
-
-

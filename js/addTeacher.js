@@ -6,13 +6,15 @@ var classroomAPI = 'http://157.10.44.240:8080/api/classroom';
 
 
 function start(token) {
-    handleCreateTeacherForm(token);
+    
 
     getTeachers(token, (teachers) => {
         getClassrooms(token, (classrooms) => {
             renderTeachers(token, teachers, classrooms);
         });
     });
+
+    handleCreateTeacherForm(token);
 }
 
 
@@ -39,70 +41,73 @@ function getClassrooms(token, callback) {
 }
 
 function renderTeachers(token, teachers, classrooms) {
-    const listTeacherTable = document.querySelector("#teacher-tableee");
-
+    const listTeacherTable = document.querySelector("#teacher-table");
+  
     listTeacherTable.innerHTML = '';
-
+  
     const headerRow = `
-      <tr>
-        <th>Họ tên</th>
-        <th>Số điện thoại</th>
-        <th>Email</th>
-        <th>Địa chỉ</th>
-        <th>Lớp giảng dạy</th>
-        <th>Thao tác</th>
-      </tr>
-    `;
-
-    listTeacherTable.innerHTML = headerRow;
-
-    const teacherRows = teachers.map((teacher) => {
-        const assignedClassroom = classrooms.find(
-            (classroom) => classroom.teacherId === teacher.id
-        );
-        const assignedClassroomName = assignedClassroom ? assignedClassroom.name : '';
-
-        return `
         <tr>
-          <td>${teacher.fullName}</td>
-          <td>${teacher.phoneNumber}</td>
-          <td>${teacher.email}</td>
-          <td>${teacher.address}</td>
-          <td>
-            <select id="classroom-${teacher.id}">
-              <option value="">-- Chọn lớp --</option>
-              ${classrooms.map(
-            (classroom) => `
-                  <option value="${classroom.id}" ${assignedClassroomName === classroom.name ? 'selected' : ''}>
-                    ${classroom.name}
-                  </option>
-                `
-        ).join('')}
-            </select>
-          </td>
-          <td>
-            <button data-teacher-id="${teacher.id}" class="btn">Cập nhật</button>
-          </td>
+          <th>Họ tên</th>
+          <th>Số điện thoại</th>
+          <th>Email</th>
+          <th>Địa chỉ</th>
+          <th>Lớp giảng dạy</th>
+          <th>Thao tác</th>
         </tr>
       `;
+  
+    listTeacherTable.innerHTML = headerRow;
+  
+    const teacherRows = teachers.map((teacher) => {
+      const assignedClassroom = classrooms.find(
+        (classroom) => classroom.teacherId === teacher.id
+      );
+      const assignedClassroomName = assignedClassroom ? assignedClassroom.name : '';
+  
+      return `
+          <tr>
+            <td>${teacher.fullName}</td>
+            <td>${teacher.phoneNumber}</td>
+            <td>${teacher.email}</td>
+            <td>${teacher.address}</td>
+            <td>
+              <select id="classroom-${teacher.id}" class="form-select">
+                <option value="">-- Chọn lớp --</option>
+                ${classrooms.map(
+        (classroom) => `
+                    <option value="${classroom.id}" ${assignedClassroomName === classroom.name ? 'selected' : ''}>
+                      ${classroom.name}
+                    </option>
+                  `
+      ).join('')}
+              </select>
+            </td>
+            <td>
+            <div class="btn-group">
+              <button data-teacher-id="${teacher.id}" class="btn btn-info">Cập nhật</button>
+              <button onclick="handleDeleteTeacher('${token}', ${teacher.id})" class="btn btn-danger" ">Xóa</button>
+            </div>
+            </td>
+  
+          </tr>
+        `;
     });
-
+  
     listTeacherTable.innerHTML += teacherRows.join('');
-
-    // Handle update button click event
+  
     listTeacherTable.querySelectorAll('button').forEach((button) => {
-        button.addEventListener('click', (event) => {
-            const teacherId = event.target.dataset.teacherId;
-            const selectedClassroomId = document.getElementById(`classroom-${teacherId}`).value;
-
-            if (selectedClassroomId) {
-                updateTeacherClassroom(token, teacherId, selectedClassroomId);
-            } else {
-                console.error('Vui lòng chọn lớp học');
-            }
-        });
+      button.addEventListener('click', (event) => {
+        const teacherId = event.target.dataset.teacherId;
+        const selectedClassroomId = document.getElementById(`classroom-${teacherId}`).value;
+  
+        if (selectedClassroomId) {
+          updateTeacherClassroom(token, teacherId, selectedClassroomId);
+        } else {
+          console.error('Vui lòng chọn lớp học');
+        }
+      });
     });
-}
+  }
 
 function updateTeacherClassroom(token, teacherId, classroomId) {
     const updateUrl = addToClassroomAPI(teacherId, classroomId);
@@ -141,10 +146,26 @@ function createTeacher(token, data) {
         })
         .then(function (data) {
             console.log('Teacher added:', data);
-            alert("Thêm thành công!");
+            Toastify({
+                text: "Thêm giáo viên thành công!",
+                duration: 5000,
+                close: true,
+                gravity: "top",
+                position: "left",
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                className: "success-toast",
+            }).showToast();
         })
         .catch(function (error) {
-            console.error('Error adding Teacher:', error);
+            Toastify({
+                text: "Thêm giáo viên thất bại!",
+                duration: 5000,
+                close: true,
+                gravity: "top",
+                position: "left",
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                className: "error-toast",
+            }).showToast();
         });
 
 }
@@ -169,3 +190,38 @@ function handleCreateTeacherForm(token) {
         createTeacher(token, formData);
     };
 }
+
+
+function handleDeleteTeacher(token, id) {
+    document.getElementById(`classroom-${id}`).selectedIndex = '';
+      // start(token);
+    axios.delete(userAPI + '/' + id, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(res => {
+      Toastify({
+        text: "Xóa thành công!",
+        duration: 5000,
+        close: true,
+        gravity: "top",
+        position: "left",
+        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        className: "success-toast",
+      }).showToast(); 
+      start(token) ;
+    })
+    .catch(function (error) {
+      Toastify({
+        text: "Xóa thất bại!",
+        duration: 5000,
+        close: true,
+        gravity: "top",
+        position: "left",
+        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+        className: "error-toast",
+      }).showToast();
+    });
+  }
+  

@@ -126,3 +126,9 @@ body {
   .glass:hover {
     animation: colorchange 2s infinite !important;
   }
+
+  .error-message {
+	  color: red;
+	  margin-top: 10px;
+	  display: none; /* Hide initially */
+  }

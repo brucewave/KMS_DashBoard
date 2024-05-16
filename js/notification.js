@@ -84,12 +84,28 @@ function handleDeleteNotification(token, id) {
         }
     })
     .then(res => {
-        alert("Xóa thành công!");
-        start(token); // Tải lại danh sách thông báo sau khi xóa thành công
+        Toastify({
+            text: "Xóa thông báo thành công!",
+            duration: 5000,
+            close: true,
+            gravity: "top",
+            position: "left",
+            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+            className: "success-toast",
+        }).showToast();
+        start(token);
     })
     .catch(err => {
         console.error(err);
-        alert("Xóa không thành công!");
+        Toastify({
+            text: "Xóa thông báo không thành công!",
+            duration: 5000,
+            close: true,
+            gravity: "top",
+            position: "left",
+            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+            className: "error-toast",
+        }).showToast();
     });
 }
 
@@ -111,11 +127,28 @@ function createNotification(token, data) {
             return response.json();
         })
         .then(function (data) {
-            console.log('Notice added:', data);
-            alert("Thêm thành công!");
+            Toastify({
+                text: "Thêm thông báo thành công!",
+                duration: 5000,
+                close: true,
+                gravity: "top",
+                position: "left",
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                className: "success-toast",
+            }).showToast();
+            start(token);
         })
         .catch(function (error) {
             console.error('Error adding Notice:', error);
+            Toastify({
+                text: "Thêm thông báo thất bại!",
+                duration: 5000,
+                close: true,
+                gravity: "top",
+                position: "left",
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                className: "error-toast",
+            }).showToast();
         });
 
 }
