@@ -1,13 +1,13 @@
 // const { default: axios } = require("axios");
 
-var parentAPI = 'http://157.10.44.240:8080/api/parent';
-var childrenAPI = 'http://157.10.44.240:8080/api/children';
-var userAPI = 'http://157.10.44.240:8080/api/user';
-var teacherAPI = 'http://157.10.44.240:8080/api/teacher';
-var classroomAPI = 'http://157.10.44.240:8080/api/classroom';
+var parentAPI = 'http://152.42.238.98:8080/api/parent';
+var childrenAPI = 'http://152.42.238.98:8080/api/children';
+var userAPI = 'http://152.42.238.98:8080/api/user';
+var teacherAPI = 'http://152.42.238.98:8080/api/teacher';
+var classroomAPI = 'http://152.42.238.98:8080/api/classroom';
 
 var addToClassroomAPI = function (teacherId, classroomId) {
-  return `http://157.10.44.240:8080/api/teacher/${teacherId}/addToClass/${classroomId}`;
+  return `http://152.42.238.98:8080/api/teacher/${teacherId}/addToClass/${classroomId}`;
 };
 
 
@@ -123,7 +123,7 @@ function renderChildren(token, children, classrooms) {
 
 //   Trả về lớp học
 function updateChildClassroom(token, childId, classroomId) {
-  const updateUrl = `http://157.10.44.240:8080/api/children/add/classroom`;
+  const updateUrl = `http://152.42.238.98:8080/api/children/add/classroom`;
 
   const raw = JSON.stringify({
     "childIds": [

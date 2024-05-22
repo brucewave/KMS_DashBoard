@@ -1,4 +1,4 @@
-var notiAPI = 'http://157.10.44.240:8080/api/notification';
+var notiAPI = 'http://152.42.238.98:8080/api/notification';
 
 function start(token) {
     handleCreateNotificationForm(token);

@@ -1,13 +1,11 @@
-// const { default: axios } = require("axios");
-
-var parentAPI = 'http://157.10.44.240:8080/api/parent';
-var childrenAPI = 'http://157.10.44.240:8080/api/children';
-var userAPI = 'http://157.10.44.240:8080/api/user';
-var teacherAPI = 'http://157.10.44.240:8080/api/teacher';
-var classroomAPI = 'http://157.10.44.240:8080/api/classroom';
+var parentAPI = 'http://152.42.238.98:8080/api/parent';
+var childrenAPI = 'http://152.42.238.98:8080/api/children';
+var userAPI = 'http://152.42.238.98:8080/api/user';
+var teacherAPI = 'http://152.42.238.98:8080/api/teacher';
+var classroomAPI = 'http://152.42.238.98:8080/api/classroom';
 
 var addToClassroomAPI = function (teacherId, classroomId) {
-  return `http://157.10.44.240:8080/api/teacher/${teacherId}/addToClass/${classroomId}`;
+  return `http://152.42.238.98:8080/api/teacher/${teacherId}/addToClass/${classroomId}`;
 };
 
 
@@ -99,13 +97,14 @@ function renderTeachers(token, teachers, classrooms) {
           <div class="btn-group">
             <button data-teacher-id="${teacher.id}" class="btn btn-info">Cập nhật</button>
             <button onclick="handleDeleteTeacher('${token}', ${teacher.id})" class="btn btn-danger" ">Xóa</button>
-          </div>
-          </td>
-
-        </tr>
-      `;
+            </div>
+            </td>
+            
+            </tr>
+            `;
   });
 
+  // <button onclick="showTeacherReview(${teacher.id})" class="btn btn-primary">Xem đánh giá</button>
   listTeacherTable.innerHTML += teacherRows.join('');
 
   listTeacherTable.querySelectorAll('button.btn-info').forEach((updateButton) => {
@@ -264,7 +263,7 @@ function renderChildren(token, children, classrooms) {
 
 //   Trả về lớp học
 function updateChildClassroom(token, childId, classroomId) {
-  const updateUrl = `http://157.10.44.240:8080/api/children/add/classroom`;
+  const updateUrl = `http://152.42.238.98:8080/api/children/add/classroom`;
 
   const raw = JSON.stringify({
     "childIds": [
@@ -486,5 +485,56 @@ function maskPassword(password) {
   }
 }
 
+
+function showTeacherReview(token, teacherId) {
+  const reviewPopup = document.getElementById('reviewPopup');
+  const reviewContent = document.getElementById('reviewContent');
+
+  // Hiển thị popup
+  reviewPopup.style.display = 'flex';
+
+  // Xóa nội dung hiện tại
+  reviewContent.innerHTML = '';
+
+  // Gọi API để lấy thông tin đánh giá
+  fetch(`http://152.42.238.98:8080/api/teacherComment/teacher/21`, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`, // Thêm token vào đây nếu cần
+    },
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Không thể tải đánh giá từ máy chủ');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Hiển thị thông tin đánh giá trong modal
+      reviewContent.innerHTML = `
+              <h2>${data.teacherName}</h2>
+              <table>
+                <tr>
+                  <th>Điểm thái độ</th>
+                  <th>Điểm sáng tạo</th>
+                  <th>Ý kiến</th>
+                </tr>
+                <tr>
+                  <td>${data.attitudeScore}</td>
+                  <td>${data.creativeScore}</td>
+                  <td>${data.comment}</td>
+                </tr>
+              </table>
+          `;
+    })
+    .catch(error => {
+      console.error('Lỗi khi tải đánh giá:', error);
+      reviewContent.innerHTML = '<p>Không thể tải đánh giá</p>';
+    });
+}
+
+function closePopup() {
+  document.getElementById('reviewPopup').style.display = 'none';
+}
 
 

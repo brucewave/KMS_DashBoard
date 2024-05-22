@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function fetchDataWithToken(token) {
     // Data Teacher
-    fetch('http://157.10.44.240:8080/api/teacher', {
+    fetch('http://152.42.238.98:8080/api/teacher', {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
@@ -30,7 +30,7 @@ function fetchDataWithToken(token) {
         .catch(error => console.error('Error fetching teachers:', error));
 
     // Data Parent
-    fetch('http://157.10.44.240:8080/api/parent', {
+    fetch('http://152.42.238.98:8080/api/parent', {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
@@ -50,7 +50,7 @@ function fetchDataWithToken(token) {
 
 
     // Data kid
-    fetch('http://157.10.44.240:8080/api/children', {
+    fetch('http://152.42.238.98:8080/api/children', {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
@@ -70,7 +70,7 @@ function fetchDataWithToken(token) {
 
 
     // Data classroom
-    fetch('http://157.10.44.240:8080/api/classroom', {
+    fetch('http://152.42.238.98:8080/api/classroom', {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`

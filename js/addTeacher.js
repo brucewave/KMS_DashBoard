@@ -1,8 +1,8 @@
-var parentAPI = 'http://157.10.44.240:8080/api/parent';
-var childrenAPI = 'http://157.10.44.240:8080/api/children';
-var userAPI = 'http://157.10.44.240:8080/api/user';
-// var teacherAPI = 'http://157.10.44.240:8080/api/teacher';
-var classroomAPI = 'http://157.10.44.240:8080/api/classroom';
+var parentAPI = 'http://152.42.238.98:8080/api/parent';
+var childrenAPI = 'http://152.42.238.98:8080/api/children';
+var userAPI = 'http://152.42.238.98:8080/api/user';
+// var teacherAPI = 'http://152.42.238.98:8080/api/teacher';
+var classroomAPI = 'http://152.42.238.98:8080/api/classroom';
 
 
 function start(token) {
